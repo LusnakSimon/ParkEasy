@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkEasy - Rezervácie</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <h1>ParkEasy</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Domov</a></li>
+            <li><a href="rezervacie.html" class="active">Rezervácie</a></li>
+            <li><a href="o-nas.html">O nás</a></li>
+        </ul>
+    </nav>
+
+</header>
+<main>
+    <h2>Rezervácie</h2>
+    <form action="#" method="post" class="reservation-form">
+        <label for="name">Meno:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="date">Dátum:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Čas:</label>
+        <input type="time" id="time" name="time" required>
+
+        <label for="spot">Číslo parkovacieho miesta:</label>
+        <input type="number" id="spot" name="spot" min="1" max="100" required>
+
+        <button type="submit" class="btn-submit">Rezervovať</button>
+    </form>
+</main>
+<div class="spacer"></div>
+<footer>
+    <p>&copy; 2024 ParkEasy. Všetky práva vyhradené.</p>
+</footer>
+</body>
+</html>
