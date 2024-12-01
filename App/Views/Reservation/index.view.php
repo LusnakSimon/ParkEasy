@@ -1,26 +1,31 @@
+<?php
+
+/** @var Array $data */
+
+/** @var \App\Core\LinkGenerator $link */
+?>
 <!DOCTYPE html>
 <html lang="sk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ParkEasy - Rezervácie</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/public/css/style.css">
 </head>
 <body>
 <header>
     <h1>ParkEasy</h1>
     <nav>
         <ul>
-            <li><a href="index.html">Domov</a></li>
-            <li><a href="rezervacie.html" class="active">Rezervácie</a></li>
-            <li><a href="o-nas.html">O nás</a></li>
+            <li><a href="<?= $link->url('home.index') ?>">Domov</a></li>
+            <li><a href="<?= $link->url('reservation.index') ?>" class="active">Rezervácie</a></li>
+            <li><a href="<?= $link->url('about.index') ?>">O nás</a></li>
         </ul>
     </nav>
-
 </header>
 <main>
     <h2>Rezervácie</h2>
-    <form action="#" method="post" class="reservation-form">
+    <form action="<?= $link->url('reservation.store') ?>" method="post">
         <label for="name">Meno:</label>
         <input type="text" id="name" name="name" required>
 
@@ -34,14 +39,14 @@
         <input type="time" id="time" name="time" required>
 
         <label for="spot">Číslo parkovacieho miesta:</label>
-        <input type="number" id="spot" name="spot" min="1" max="100" required>
+        <input type="number" id="spot" name="spot" required>
 
-        <button type="submit" class="btn-submit">Rezervovať</button>
+        <button type="submit">Rezervovať</button>
     </form>
 </main>
-<div class="spacer"></div>
 <footer>
     <p>&copy; 2024 ParkEasy. Všetky práva vyhradené.</p>
 </footer>
 </body>
 </html>
+

@@ -1,19 +1,26 @@
+<?php
+
+/** @var Array $data */
+
+/** @var \App\Core\LinkGenerator $link */
+?>
+
 <!DOCTYPE html>
 <html lang="sk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ParkEasy - Prehľad parkovacích miest</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/public/css/style.css">
 </head>
 <body>
 <header>
     <h1>ParkEasy</h1>
     <nav>
         <ul>
-            <li><a href="index.html" class="active">Domov</a></li>
-            <li><a href="rezervacie.html">Rezervácie</a></li>
-            <li><a href="o-nas.html">O nás</a></li>
+            <li><a href="<?= $link->url('home.index') ?>" class="active">Domov</a></li>
+            <li><a href="<?= $link->url('reservation.index') ?>">Rezervácie</a></li>
+            <li><a href="<?= $link->url('about.index') ?>">O nás</a></li>
         </ul>
     </nav>
 </header>
