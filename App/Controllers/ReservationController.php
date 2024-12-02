@@ -22,16 +22,16 @@ class ReservationController extends AControllerBase {
         $spot_id = $this->request()->getValue('spot');
 
         if (strlen($name) < 3 || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return $this->html(['error' => 'Neplatné meno alebo e-mail.'], 'Reservation/index');
+            return $this->html(['error' => 'Neplatné meno alebo e-mail.'], 'index');
         }
 
         if (strtotime($date) < strtotime(date('Y-m-d'))) {
-            return $this->html(['error' => 'Dátum musí byť v budúcnosti.'], 'Reservation/index');
+            return $this->html(['error' => 'Dátum musí byť v budúcnosti.'], 'index');
         }
 
         $spot = Parking::getOne($spot_id);
         if (!$spot || $spot->getStatus() !== 'free') {
-            return $this->html(['error' => 'Miesto je už rezervované alebo obsadené.'], 'Reservation/index');
+            return $this->html(['error' => 'Miesto je už rezervované alebo obsadené.'], 'index');
         }
 
         $reservation = new Reservation();
@@ -63,17 +63,19 @@ class ReservationController extends AControllerBase {
     }
 
     public function edit(): Response {
-        $id = $this->request()->getValue('id'); // Získanie ID rezervácie z URL
-        $reservation = Reservation::getOne($id); // Načítanie rezervácie podľa ID
+        $id = $this->request()->getValue('id');
+        $reservation = Reservation::getOne($id);
 
 
-        $parkings = Parking::getAll(); // Načítanie všetkých parkovacích miest
+        $parkings = Parking::getAll();
 
         return $this->html(['reservation' => $reservation, 'parkings' => $parkings]);
     }
 
     public function update(): Response {
-        $id = $this->request()->getValue('id'); // ID rezervácie
+
+        $id = $this->request()->getValue('id');
+
         $reservation = Reservation::getOne($id);
 
         if (!$reservation) {
@@ -87,26 +89,11 @@ class ReservationController extends AControllerBase {
         $spot_id = $this->request()->getValue('spot');
 
         if (strlen($name) < 3 || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return $this->html(['error' => 'Neplatné meno alebo e-mail.'], 'Reservation/edit');
+            return $this->html(['error' => 'Neplatné meno alebo e-mail.'], 'edit');
         }
 
         if (strtotime($date) < strtotime(date('Y-m-d'))) {
-            return $this->html(['error' => 'Dátum musí byť v budúcnosti.'], 'Reservation/edit');
-        }
-
-        if ($reservation->getSpotId() !== $spot_id) {
-            $spot = Parking::getOne($spot_id);
-            if (!$spot || $spot->getStatus() !== 'free') {
-                return $this->html(['error' => 'Vybrané miesto je už rezervované alebo obsadené.'], 'Reservation/edit');
-            }
-
-            $oldSpot = Parking::getOne($reservation->getSpotId());
-            $oldSpot->setStatus('free');
-            $oldSpot->save();
-
-            $spot->setStatus('reserved');
-            $spot->save();
-            $reservation->setSpotId($spot_id);
+            return $this->html(['error' => 'Dátum musí byť v budúcnosti.'], 'edit');
         }
 
         $reservation->setName($name);
