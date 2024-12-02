@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
+use App\Models\Parking;
 
 /**
  * Class HomeController
@@ -26,9 +27,9 @@ class HomeController extends AControllerBase
      * Example of an action (authorization needed)
      * @return \App\Core\Responses\Response|\App\Core\Responses\ViewResponse
      */
-    public function index(): Response
-    {
-        return $this->html();
+    public function index(): Response {
+        $parkings = Parking::getAll();
+        return $this->html(['parkings' => $parkings]);
     }
 
     /**

@@ -8,7 +8,7 @@
 <html lang="sk">
 <head>
     <title><?= \App\Config\Configuration::APP_NAME ?></title>
-    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/styl.css">
 </head>
 <body>
 <header>
@@ -27,5 +27,6 @@
 <footer>
     <p>&copy; 2024 ParkEasy. Všetky práva vyhradené.</p>
 </footer>
+<script src="/public/js/filter.js"></script>
 </body>
 </html>
