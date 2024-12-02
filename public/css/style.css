@@ -1,29 +1,13 @@
-@media (max-width: 768px) {
-    .parking-lot {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    main {
-        padding: 10px;
-    }
-
-    .reservation-form input {
-        width: 100%;
-    }
-}
-
-
-body {
-    font-family: Arial, sans-serif;
+/* Globálne nastavenia */
+html, body {
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    height: 100%; /* Zabezpečí, že HTML a body majú 100 % výšku */
     display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    flex-direction: column; /* Flexbox na vertikálne rozloženie */
 }
 
+/* Hlavička stránky */
 header {
     background-color: #333;
     color: #fff;
@@ -31,15 +15,28 @@ header {
     text-align: center;
 }
 
+/* Hlavný obsah */
+main {
+    flex: 1; /* Flexibilne vyplní zvyšok priestoru medzi hlavičkou a pätou */
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigačné menu */
 nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
+    text-align: center;
 }
 
 nav ul li {
-    display: inline;
+    display: inline-block;
     margin-right: 15px;
 }
 
@@ -54,16 +51,18 @@ nav ul li a.active {
     border-bottom: 2px solid #ffa500;
 }
 
-main {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    flex: 1;
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    position: relative;
+    bottom: 0;
 }
 
+/* Parkovacie miesta */
 .parking-lot {
     display: flex;
     gap: 10px;
@@ -93,6 +92,7 @@ main {
     background-color: #ff6347;
 }
 
+/* Formuláre */
 .reservation-form {
     display: flex;
     flex-direction: column;
@@ -107,6 +107,7 @@ main {
     padding: 8px;
     border-radius: 4px;
     border: 1px solid #ccc;
+    width: 100%; /* Pri menších zariadeniach vyplní celý priestor */
 }
 
 .btn-submit {
@@ -122,17 +123,18 @@ main {
     background-color: #555;
 }
 
-.spacer {
-    height: 50px;
+/* Responzívne nastavenia */
+@media (max-width: 768px) {
+    .parking-lot {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .reservation-form input {
+        width: 100%; /* Pri menších zariadeniach vyplní celý priestor */
+    }
 }
-
-
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    width: 100%;
-    position: relative;
-}
-

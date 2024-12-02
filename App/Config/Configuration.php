@@ -15,15 +15,15 @@ class Configuration
     /**
      * App name
      */
-    public const APP_NAME = 'Vaííčko MVC FW';
+    public const APP_NAME = 'ParkEasy';
     public const FW_VERSION = '2.2';
 
     /**
      * DB settings
      */
     public const DB_HOST = 'db';  // see docker/docker-compose.yml
-    public const DB_NAME = 'vaiicko_db'; // see docker/.env
-    public const DB_USER = 'vaiicko_user'; // see docker/.env
+    public const DB_NAME = 'parkeasy_db'; // see docker/.env
+    public const DB_USER = 'parkeasy_user'; // see docker/.env
     public const DB_PASS = 'dtb456'; // see docker/.env
 
     /**

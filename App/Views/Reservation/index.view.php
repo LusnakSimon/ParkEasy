@@ -13,16 +13,6 @@
     <link rel="stylesheet" href="/public/css/style.css">
 </head>
 <body>
-<header>
-    <h1>ParkEasy</h1>
-    <nav>
-        <ul>
-            <li><a href="<?= $link->url('home.index') ?>">Domov</a></li>
-            <li><a href="<?= $link->url('reservation.index') ?>" class="active">Rezervácie</a></li>
-            <li><a href="<?= $link->url('about.index') ?>">O nás</a></li>
-        </ul>
-    </nav>
-</header>
 <main>
     <h2>Rezervácie</h2>
     <form action="<?= $link->url('reservation.store') ?>" method="post">
@@ -44,9 +34,6 @@
         <button type="submit">Rezervovať</button>
     </form>
 </main>
-<footer>
-    <p>&copy; 2024 ParkEasy. Všetky práva vyhradené.</p>
-</footer>
 </body>
 </html>
 
