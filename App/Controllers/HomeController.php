@@ -1,43 +1,15 @@
 <?php
-
 namespace App\Controllers;
 
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Models\Parking;
 
-/**
- * Class HomeController
- * Example class of a controller
- * @package App\Controllers
- */
 class HomeController extends AControllerBase
 {
-    /**
-     * Authorize controller actions
-     * @param $action
-     * @return bool
-     */
-    public function authorize($action)
+    public function index(): Response
     {
-        return true;
-    }
-
-    /**
-     * Example of an action (authorization needed)
-     * @return \App\Core\Responses\Response|\App\Core\Responses\ViewResponse
-     */
-    public function index(): Response {
         $parkings = Parking::getAll();
         return $this->html(['parkings' => $parkings]);
-    }
-
-    /**
-     * Example of an action accessible without authorization
-     * @return \App\Core\Responses\ViewResponse
-     */
-    public function contact(): Response
-    {
-        return $this->html();
     }
 }

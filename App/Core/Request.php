@@ -144,4 +144,6 @@ class Request
 
         return $protocol . '://' . $hostName . $path;
     }
+
+
 }

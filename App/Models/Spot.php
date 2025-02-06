@@ -23,4 +23,9 @@ class Spot extends Model {
     public function setSpotNumber(int $number): void {
         $this->spot_number = $number;
     }
+
+    public static function deleteAll(string $where = null, array $params = []): int
+    {
+        return self::getConnection()->delete($where, $params);
+    }
 }

@@ -1,5 +1,4 @@
 <?php
-
 /** @var string $contentHTML */
 /** @var \App\Core\IAuthenticator $auth */
 /** @var \App\Core\LinkGenerator $link */
@@ -8,25 +7,37 @@
 <html lang="sk">
 <head>
     <title><?= \App\Config\Configuration::APP_NAME ?></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/public/css/styl.css">
 </head>
 <body>
-<header>
-    <h1>ParkEasy</h1>
-    <nav>
-        <ul>
-            <li><a href="<?= $link->url('home.index') ?>" class="<?= $_SERVER['REQUEST_URI'] === $link->url('home.index') ? 'active' : '' ?>">Domov</a></li>
-            <li><a href="<?= $link->url('reservation.index') ?>" class="<?= $_SERVER['REQUEST_URI'] === $link->url('reservation.index') ? 'active' : '' ?>">Rezervácie</a></li>
-            <li><a href="<?= $link->url('about.index') ?>" class="<?= $_SERVER['REQUEST_URI'] === $link->url('about.index') ? 'active' : '' ?>">O nás</a></li>
-        </ul>
-    </nav>
-</header>
-<main>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="<?= $link->url('home.index') ?>">ParkEasy</a>
+        <div class="navbar-nav">
+            <?php if ($auth->isLogged()): ?>
+                <a class="nav-link" href="<?= $link->url('reservation.index') ?>">Moje rezervácie</a>
+                <a class="nav-link" href="<?= $link->url('parking.index') ?>">Moje parkoviská</a>
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <?= $auth->getLoggedUserName() ?>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="<?= $link->url('profile.index') ?>">Profil</a></li>
+                        <li><a class="dropdown-item" href="<?= $link->url('auth.logout') ?>">Odhlásiť</a></li>
+                    </ul>
+                </div>
+            <?php else: ?>
+                <a class="nav-link" href="<?= $link->url('auth.login') ?>">Prihlásiť</a>
+            <?php endif; ?>
+        </div>
+    </div>
+</nav>
+
+<main class="container mt-4">
     <?= $contentHTML ?>
 </main>
-<footer>
-    <p>&copy; 2024 ParkEasy. Všetky práva vyhradené.</p>
-</footer>
-<script src="/public/js/filter.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
