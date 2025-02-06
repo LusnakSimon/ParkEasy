@@ -24,7 +24,14 @@ class User extends Model {
         return $this->password;
     }
 
-    public function setPassword(string $password): void {
+    public function setPassword(string $password): void
+    {
         $this->password = password_hash($password, PASSWORD_DEFAULT);
+    }
+
+    public static function findByUsername(string $username): ?self
+    {
+        $users = self::getAll("username = ?", [$username]);
+        return count($users) > 0 ? $users[0] : null;
     }
 }
