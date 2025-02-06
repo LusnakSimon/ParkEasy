@@ -6,50 +6,41 @@ use App\Core\Model;
 
 class Reservation extends Model {
     protected ?int $id = null;
-    protected ?string $name = null;
-    protected ?string $email = null;
-    protected ?string $date = null;
-    protected ?string $time = null;
-    protected ?int $spot_id = null;
+    protected int $user_id;
+    protected int $spot_id;
+    protected string $time_from;
+    protected string $time_to;
 
     public function getId(): ?int {
         return $this->id;
     }
 
-    public function getName(): ?string {
-        return $this->name;
+    public function getUserId(): int {
+        return $this->user_id;
     }
 
-    public function getEmail(): ?string {
-        return $this->email;
+    public function setUserId($user_id): void {
+       $this->user_id = $user_id;
     }
 
-    public function getDate(): ?string {
-        return $this->date;
+    public function getTimeFrom(): string {
+        return $this->time_from;
     }
 
-    public function getTime(): ?string {
-        return $this->time;
+    public function getTimeTo(): string {
+        return $this->time_to;
     }
 
-    public function getSpotId(): ?int {
+    public function getSpotId(): int {
         return $this->spot_id;
     }
 
-    public function setName(string $name): void {
-        $this->name = $name;
+    public function setTimeTo(string $time_to): void {
+        $this->time_to = $time_to;
     }
 
-    public function setEmail(string $email): void {
-        $this->email = $email;
-    }
-
-    public function setDate(string $date): void {
-        $this->date = $date;
-    }
-
-    public function setTime(string $time): void {
-        $this->time = $time;
+    public function setTimeFrom(string $time_from): void {
+        $this->time_from = $time_from;
     }
 
     public function setSpotId(int $spot_id): void {
