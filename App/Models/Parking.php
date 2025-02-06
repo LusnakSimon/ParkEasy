@@ -1,31 +1,43 @@
 <?php
-
 namespace App\Models;
 
 use App\Core\Model;
 
 class Parking extends Model {
     protected ?int $id = null;
-    protected ?int $spot_number = null;
-    protected ?string $status = 'free';
+    protected int $user_id;
+    protected string $title;
+    protected int $number_of_spots;
+    protected ?string $photo = null;
+
 
     public function getId(): ?int {
         return $this->id;
     }
-
-    public function getSpotNumber(): ?int {
-        return $this->spot_number;
+    public function getUserId(): int {
+        return $this->user_id;
+    }
+    public function setUserId(int $userId): void {
+        $this->user_id = $userId;
+    }
+    public function getTitle(): string {
+        return $this->title;
+    }
+    public function setTitle(string $title): void {
+        $this->title = $title;
     }
 
-    public function getStatus(): ?string {
-        return $this->status;
+    public function getNumberOfSpots(): int {
+        return $this->number_of_spots;
     }
 
-    public function setSpotNumber(int $spot_number): void {
-        $this->spot_number = $spot_number;
+    public function setNumberOfSpots(int $number_of_spots): void {
+        $this->number_of_spots = $number_of_spots;
     }
-
-    public function setStatus(string $status): void {
-        $this->status = $status;
+    public function getPhoto(): ?string {
+        return $this->photo;
+    }
+    public function setPhoto(?string $photo): void {
+        $this->photo = $photo;
     }
 }
