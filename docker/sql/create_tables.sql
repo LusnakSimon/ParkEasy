@@ -1,0 +1,31 @@
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS parkings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    number_of_spots INT NOT NULL,
+    title VARCHAR(100) NOT NULL,
+    photo VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS spots (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    parking_id INT NOT NULL,
+    spot_number INT NOT NULL,
+    FOREIGN KEY (parking_id) REFERENCES parkings(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS reservations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    spot_id INT NOT NULL,
+    time_from VARCHAR(19) NOT NULL,
+    time_to VARCHAR(19) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (spot_id) REFERENCES spots(id) ON DELETE CASCADE
+);
